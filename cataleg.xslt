@@ -12,7 +12,7 @@
       <th style="text-align:left">Price</th>
     </tr>
     <xsl:for-each select="catalog/cd [price &lt; 10]">
-    <xsl:sort select="artist"/>
+    <xsl:sort select="price"/>
     <tr>
       <td><xsl:value-of select="title"/></td>
       <td><xsl:value-of select="artist"/></td>
