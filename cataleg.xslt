@@ -12,28 +12,29 @@
       <th style="text-align:left">Price</th>
       <th style="text-align:left">Status</th>
     </tr>
-    <xsl:for-each select="catalog/cd">
-    <xsl:sort select="price"/>
-    <tr>
-      <td><xsl:value-of select="title"/></td>
-      <td><xsl:value-of select="artist"/></td>
-      <td><xsl:value-of select="country"/></td>
-      <td><xsl:value-of select="price"/></td>
-      <td style="text-align:center">
-        <xsl:choose >
-          <xsl:when test="price &lt; 10">
-            &#128994; 
-          </xsl:when>
-          <xsl:when test="price &gt;= 10">
-            &#128308; 
-          </xsl:when>
-        </xsl:choose>
-      </td>
-    </tr>
-    </xsl:for-each>
+      <xsl:apply-templates select="catalog/cd"/>
   </table>
 </body>
 </html>
+</xsl:template>
+
+<xsl:template match="cd">
+  <tr>
+    <td><xsl:value-of select="title"/></td>
+    <td><xsl:value-of select="artist"/></td>
+    <td><xsl:value-of select="country"/></td>
+    <td><xsl:value-of select="price"/></td>
+    <td style="text-align:center">
+      <xsl:choose>
+        <xsl:when test="price &lt; 10">
+           &#128994; <!-- Círculo verde -->
+        </xsl:when>
+        <xsl:when test="price &gt;= 10">
+          &#128308; <!-- Círculo rojo -->
+        </xsl:when>
+      </xsl:choose>
+    </td>
+  </tr>
 </xsl:template>
 </xsl:stylesheet>
 
